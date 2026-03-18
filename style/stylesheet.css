@@ -30,10 +30,15 @@ img {
 }
 
 .container {
-    width: 1400px;
+    width: 100%;
+    max-width: 1400px;
     margin: 0 auto;
 }
-
+@media (max-width: 768px) {
+  .block {
+    flex-direction: column;
+  }
+}
 header {
     padding: 25px 0;
 }
