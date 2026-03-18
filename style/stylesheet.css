@@ -44,8 +44,8 @@ header {
 }
 
 header nav:not(.main) {
-    float: right;
-    width: 50%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 header nav ul {
@@ -96,9 +96,7 @@ header nav ul li.btn a:hover {
 
 header nav ul li.falseBtn a {
     background: #222345;
-    padding: 30px 90px;
-    padding-right: 170px;
-    padding-left: 50px;
+    padding: 15px 25px;
     border-radius: 7px;
     transition: all 500ms ease;
 }
@@ -140,19 +138,12 @@ header nav ul li.falseBtn a:hover {
     background: #29B6F6 !important;
 }
 
-.hero-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 120px;
-}
-
 .hero-left {
     width: 55%;
 }
 
 .hero-title {
-    font-size: 125px;
+    font-size: clamp(40px, 8vw, 125px);
     font-family: Tektur;
     font-weight: 400;
     color: #fff;
@@ -209,7 +200,7 @@ hr {
 .timeline {
     position: relative;
     max-width: 900px;
-    margin: 100px 0px 100px 100px;
+    margin: 100px 20px;
     padding-left: 60px;
 }
 
@@ -578,4 +569,16 @@ html {
 #scrollTopBtn:hover {
   background: #656a8f;
   transform: translateY(-2px);
+}
+/* ===== АДАПТИВ ===== */
+@media (max-width: 900px) {
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-left,
+  .hero-right {
+    width: 100%;
+  }
 }
