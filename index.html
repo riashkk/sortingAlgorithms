@@ -647,6 +647,67 @@
         <p class="infoText">Быстрая сортировка (также сортировка Хоара; англ. Quick sort) – алгоритм сортировки, разработанный английским информатиком Тони Хоаром во время его работы в МГУ в 1960 году.</p>
         <p class="infoText">Быстрая сортировка является сильно улучшенной версией сортировки простыми обменами.</p>
         <p class="infoText">Принцип работы: на каждом этапе выбирается «опорный» элемент, с которым затем сравниваются остальные элементы (те, что больше «опорного» ставятся справа от него, те, что меньше – слева), для образовавшихся после этого двух блоков массива производится та же операция и так до тех пор, пока не будут получены единичные блоки.</p>
+        <div class="code-wrapper">
+        <div class="code-top">
+            <span>C++</span>
+            <button class="copy-btn" aria-label="Копировать код">
+            <svg viewBox="0 0 24 24" width="18" height="18">
+                <path fill="currentColor"
+                d="M16 1H4C2.9 1 2 1.9 2 3V15H4V3H16V1ZM19 5H8C6.9 5 6 5.9 6 7V21C6 22.1 6.9 23 8 23H19C20.1 23 21 22.1 21 21V7C21 5.9 20.1 5 19 5ZM19 21H8V7H19V21Z"/>
+            </svg>
+            </button>
+        </div>
+        <div class="code-inner">
+            <pre><code class="language-cpp">
+                #include &lt;iostream&gt;
+
+                const int LEN = 10;
+                int exchange;
+                int mass[LEN] = { 2,1,4,7,5,8,9,20,0,3 };
+
+                int quicksort_r(int* Mass, int start, int end);
+                int quicksort(int* Mass, int len);
+
+                int main() {
+                    quicksort(mass, LEN);
+                    int i;
+                    for (i = 0; i < LEN; i++) {
+                        std::cout << mass[i] << std::endl;
+                    }
+                    return 0;
+                }
+
+                int quicksort(int* Mass, int len) {
+                    quicksort_r(Mass, 0, len - 1);
+                    return 0;
+                }
+                int quicksort_r(int* Mass, int start, int end) {
+                    if (start >= end) {
+                        return 0;
+                    }
+                    int pivot = Mass[end];
+                    int pointer = start;
+                    int i;
+                    for (i = start; i < end; i++) {
+                        if (Mass[i] < pivot) {
+                            if (pointer != i) {
+                                exchange = Mass[i];
+                                Mass[i] = Mass[pointer];
+                                Mass[pointer] = exchange;
+                            }
+                            pointer++;
+                        }
+                    }
+                    exchange = Mass[end];
+                    Mass[end] = Mass[pointer];
+                    Mass[pointer] = exchange;
+                    quicksort_r(Mass, start, pointer - 1);
+                    quicksort_r(Mass, pointer + 1, end);
+                    return 0;
+                }
+                </code></pre>
+        </div>
+        </div>
         <p class="infoText">В данном алгоритме используется рекурсия (массив разбивается на два блока, затем эти два блока разбиваются еще на четыре блока и так далее..), из-за чего при использовании сразу двух рекурсий (одновременно для левой и правой частей может понадобиться большой объем памяти. Эта проблема решается различными усовершенствованиями алгоритма.</p>
         <p class="infoText">Быстрая сортировка имеет достаточно хорошую временную сложность – O(n log n) и используется для решения многих задач.</p>
         <br><br><br>
